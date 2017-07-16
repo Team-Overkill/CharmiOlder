@@ -6,7 +6,7 @@ import {
   View, Button,
   Modal, TouchableHighlight
 } from 'react-native';
-import { StackNavigator, DrawerNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 import SampleText from './SampleText';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -14,8 +14,10 @@ class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Charmi',
   };
+  
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation
+    
     return (
       <View>
         <Text>Hello, Chat App!</Text>
@@ -23,21 +25,21 @@ class HomeScreen extends React.Component {
           onPress={() => navigate('Chat', { user: 'Frank' })}
           title="Chat with Lucy"
         />
-
-        <ScrollView style={styles.container}>
-    
-    <Button
-      onPress={() => navigate('DrawerOpen')}
-      title="Open drawer"
-    />
-    
-  </ScrollView>
-
         <ModalExample/>
       </View>
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
 class ChatScreen extends React.Component {
     // Nav options can be defined as a function of the screen's props:
   static navigationOptions = ({ navigation }) => ({
@@ -126,59 +128,7 @@ class ModalExample extends React.Component {
 
 
 
-// const MyNavScreen = ({ navigation, banner }) => (
-//   <ScrollView style={styles.container}>
-//     <SampleText>{banner}</SampleText>
-//     <Button
-//       onPress={() => navigation.navigate('DrawerOpen')}
-//       title="Open drawer"
-//     />
-//     <Button onPress={() => navigation.goBack(null)} title="Go back" />
-//   </ScrollView>
-// );
 
-// const InboxScreen = ({ navigation }) => (
-//   <MyNavScreen banner={'Inbox Screen'} navigation={navigation} />
-// );
-// InboxScreen.navigationOptions = {
-//   drawerLabel: 'Inbox',
-//   drawerIcon: ({ tintColor }) => (
-//     <MaterialIcons
-//       name="move-to-inbox"
-//       size={24}
-//       style={{ color: tintColor }}
-//     />
-//   ),
-// };
-
-// const DraftsScreen = ({ navigation }) => (
-//   <MyNavScreen banner={'Drafts Screen'} navigation={navigation} />
-// );
-// DraftsScreen.navigationOptions = {
-//   drawerLabel: 'Drafts',
-//   drawerIcon: ({ tintColor }) => (
-//     <MaterialIcons name="drafts" size={24} style={{ color: tintColor }} />
-//   ),
-// };
-
-// const DrawerExample = DrawerNavigator(
-//   {
-//     Inbox: {
-//       path: '/',
-//       screen: InboxScreen,
-//     },
-//     Drafts: {
-//       path: '/sent',
-//       screen: DraftsScreen,
-//     },
-//   },
-//   {
-//     initialRouteName: 'Drafts',
-//     contentOptions: {
-//       activeTintColor: '#e91e63',
-//     },
-//   }
-// );
 
 const styles = StyleSheet.create({
   container: {
@@ -186,12 +136,12 @@ const styles = StyleSheet.create({
   },
 });
 
-// export default DrawerExample;
+
 
 const SimpleApp = StackNavigator({
   Home: { screen: HomeScreen },
   Chat: { screen: ChatScreen },
-  Matches: { screen: MatchesScreen }
+  Matches: { screen: MatchesScreen },
 });
 
 AppRegistry.registerComponent('SimpleApp', () => SimpleApp);
